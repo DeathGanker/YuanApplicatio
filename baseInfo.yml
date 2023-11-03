@@ -1,0 +1,47 @@
+webDomain:
+  domainId: dataos208dataos208dataos208                                 #生成一个uuid
+  name: end2081测试数据域                            #默认取data_domain.data_domain_name
+  describe: 用于测试2081版本自动化安装脚本的测试属于域      #默认取data_domain.data_domain_describe
+  url: http://end2081.youedata.cn                           #默认为空 命名空间字段控制在15个字符之内
+  alicloudAccessKey: LTAI4FxajaoX81tEbfMS2cCN            #默认
+  alicloudSecretKey: gDKL6GEs78Xfwp4VoOFW3Viu8hjc9c      #默认
+harbor:
+  url: 172.16.4.64:1180                           #harbor
+  treaty: http
+  username: admin                                 #默认
+  password: Harbor12345                          #默认
+  version: v2.0.8                                 #默认
+  always: false                                    #imagePullPolicy: 参数 true=Always false=IfNotPresent
+  pushUrl: 172.16.4.64:1180                       #组件推送镜像地址
+  pushTreaty: http
+  pushUsername: admin                             #组件推送镜像用户名
+  pushPassword: Harbor12345                       #组件推送镜像密码
+k8s:
+  url: 172.16.32.11:8080                          #默认  kube-masterIp:8080
+  traefikIp: 172.16.32.16                         #选择traefik所在节点  kubectl get nodes --show-labels  查看 IngressProxy=true 任一节点
+cdh:
+  switch: false                                    #cdh开关，true为使用cdh要填写ip\port\username\password信息 false可为空
+  ip: 172.16.240.10                                 #默认空
+  port: 7180                                      #默认
+  username: admin                                 #默认
+  password: admin                                 #默认
+  kafkaInfo: 172.16.32.28:9092,172.16.32.29:9092,172.16.32.30:9092   #kafka节点集群ip:端口(ip1:端口号,ip2:端口号,ip3:端口号
+ftp:
+  ip: 172.16.24.176                                #默认  【vsftpd】ip
+  port: 21                                        #默认
+  username: ftpuser                               #默认
+  password: ftpuser@123                           #默认
+  nginxUrl: http://172.16.24.176:8088              #默认   [nginx]ip
+docker:
+  ip: 172.16.32.12                                #默认  kube-master
+  port: 22                                        #默认
+  username: root                                  #默认
+  password: Youedata@12#                          #默认  Youedata@ip#
+secret:
+  key: QVFCS01ZSmVtNEVzQ1JBQWltWmZWSTRacml2MXZSVFFlcmwrOUE9PQ==      #grep key /etc/ceph/ceph.client.admin.keyring |awk '{printf "%s", $NF}'|base64
+deploy:
+  type: Create           #Create or Update
+  mode: k8s
+componentSwitch: false                             #组件开关  /component 文件夹下需要有 inft_xxx.txt文件 且文件内路径要有正确路径的组件包
+application:                                      #后续应用都以开关的方式来确定当前数据域是否进行部署
+  flink: false                                     #增加flink应用开关
