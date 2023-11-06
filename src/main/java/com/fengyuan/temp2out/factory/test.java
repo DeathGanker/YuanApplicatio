@@ -1,10 +1,13 @@
 package com.fengyuan.temp2out.factory;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.fengyuan.env.bean.CommonProperties;
 import com.fengyuan.temp2out.bean.WeChat;
 
+import java.io.File;
 import java.util.Map;
 import java.util.Objects;
+
 
 public class test {
     private String appId;
@@ -19,8 +22,9 @@ public class test {
        wechat.setOpenAIApiKey("yourAppId");
        wechat.setOpenAIApiBase("yourAppSecret");
 
+       File file = new File(CommonProperties.ftlResourcePath+File.separator+"docker-compose-wechat.ftl");
 
-        String template = readTemplate("docker-compose-wechat.ftl");
+        String template = readTemplate(file.toString());
 
 
         String output = replacePlaceholders(BeanUtil.beanToMap(wechat), template);

@@ -26,30 +26,6 @@ public class Temp2outFactory {
     private File yamlFile = null;
 
     /**
-     * 初始化配置
-     */
-    public Temp2outFactory() {
-        cfg = new Configuration();
-        File yamlFile = null;
-        try {
-            yamlFile = new File(FileUtil.file(".", "temp/path" + File.separator + "temp").getCanonicalPath());
-            cfg.setDirectoryForTemplateLoading(yamlFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Temp2outFactory(String url) {
-        cfg = new Configuration();
-        try {
-            yamlFile = new File(FileUtil.file(".", "temp/path"  + File.separator  + url).getCanonicalPath());
-            cfg.setDirectoryForTemplateLoading(yamlFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 生成yaml
      * @param map
      * @param ftlName
@@ -114,22 +90,6 @@ public class Temp2outFactory {
             }
         }
         return 0;
-    }
-
-    public String getFtlPath() {
-        return ftlPath;
-    }
-
-    public void setFtlPath(String ftlPath) {
-        this.ftlPath = ftlPath;
-    }
-
-    public String getYamlPath() {
-        return yamlPath;
-    }
-
-    public void setYamlPath(String yamlPath) {
-        this.yamlPath = yamlPath;
     }
 
     public static void main(String[] args) {
