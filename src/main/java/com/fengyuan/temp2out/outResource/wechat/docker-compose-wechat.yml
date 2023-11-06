@@ -1,0 +1,32 @@
+version: '2.0'
+services:
+  chatgpt-on-wechat:
+    image: zhayujie/chatgpt-on-wechat
+    container_name: chatgpt-on-wechat
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      OPEN_AI_API_KEY: 'fastgpt-xJZGoNdjvlQ7yRbBgGHqQMh4I5oTDO'
+      OPEN_AI_API_BASE: 'http://api.powerz.cn:4000/api/v1'
+      MODEL: 'gpt-4'
+      CHANNEL_TYPE: 'wx'
+      PROXY: ''
+      HOT_RELOAD: 'True'
+      SINGLE_CHAT_PREFIX: '["", ""]'
+      SINGLE_CHAT_REPLY_PREFIX: '""'
+      GROUP_CHAT_PREFIX: '["@小元"]'
+      GROUP_NAME_WHITE_LIST: '["小元内测群", "国信钧元", "白城公积金AI服务体验群"]'
+      IMAGE_CREATE_PREFIX: '["画", "看", "找"]'
+      CONVERSATION_MAX_TOKENS: 1000
+      SPEECH_RECOGNITION: 'True'
+      CHARACTER_DESC: '你是小元, 一个由国信钧元训练的大型语言模型, 你是一名拥有广泛行业知识的专家，旨在回答并解决您的任何问题，并且可以使用多种语言与人交流。'
+      SUBSCRIBE_MSG: '感谢您的关注！\n这里是小元，可以自由对话。\n支持语音对话。\n支持图片输入。\n支持图片输出，画字开头的消息将按要求创作图片。\n支持tool、角色扮演和文字冒险等丰富的插件。\n输入{trigger_prefix}#help 查看详细指令。'
+      EXPIRES_IN_SECONDS: 3600
+      USE_GLOBAL_PLUGIN_CONFIG: 'True'
+      USE_LINKAI: 'False'
+      LINKAI_API_KEY: ''
+      LINKAI_APP_CODE: ''
+      VOICE_TO_TEXT: 'baidu'
+      BAIDU_APP_ID: '41386236'
+      BAIDU_API_KEY: 'ksiwjGOvGaYDG6OFNLimRffo'
+      BAIDU_SECRET_KEY: 'VyIqC4E6Qb6i1rLfGdXMhDkcvMSBHGPP'
